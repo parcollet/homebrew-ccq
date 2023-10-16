@@ -12,6 +12,7 @@ class Nda < Formula
   depends_on "open-mpi"
   depends_on "python"
   depends_on "numpy"
+  depends_on "itertools"
 
   def install
     args = %W[
@@ -19,6 +20,7 @@ class Nda < Formula
       -DCMAKE_INSTALL_PREFIX=#{prefix}
       -DPythonSupport=ON
       -DBuild_Tests=OFF
+      -DBuild_Deps=IfNotFound 
     ]
 
     ENV["CC"] = Formula["llvm"].opt_bin/"clang"
@@ -30,15 +32,8 @@ class Nda < Formula
   end
 
   test do
-    # `test do` will create, run in and delete a temporary directory.
-    #
-    # This test will fail and we won't accept that! For Homebrew/homebrew-core
-    # this will need to be a test that verifies the functionality of the
-    # software. Run the test with `brew test parcollet/ccq/nda`. Options passed
-    # to `brew install` such as `--HEAD` also need to be provided to `brew test`.
-    #
-    # The installed folder is not in the path, so use the entire path to any
-    # executables being tested: `system "#{bin}/program", "do", "something"`.
-    system "false"
+    (testpath/"ess.cpp").write("#include <nda/nda.hpp>
+                              int main() {} ")
+    system Formula["llvm"].opt_bin/"clang++", "ess.cpp", "-std=c++20"
   end
 end
