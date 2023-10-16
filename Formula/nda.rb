@@ -4,22 +4,27 @@ class Nda < Formula
   url "https://github.com/TRIQS/nda/archive/refs/tags/1.2.0.tar.gz"
   sha256 "e054ff73512b9c43ca8c0b5036629ecf6179befd5b6b9579b963d683be377c89"
   license "Apache-2.0"
-  head "https://github.com/TRIQS/nda.git"
+  head "https://github.com/TRIQS/nda.git", branch: "unstable"
 
   depends_on "cmake" => :build
+  depends_on "ninja" => :build
   depends_on "llvm"
   depends_on "open-mpi"
+  depends_on "python"
+  depends_on "numpy"
 
   def install
     args = %W[
       -DCMAKE_BUILD_TYPE=Release
       -DCMAKE_INSTALL_PREFIX=#{prefix}
+      -DPythonSupport=ON
+      -DBuild_Tests=OFF
     ]
 
     ENV["CC"] = Formula["llvm"].opt_bin/"clang"
     ENV["CXX"] = Formula["llvm"].opt_bin/"clang++"
 
-    system "cmake", "-S", ".", "-B", "build", *std_cmake_args, *args
+    system "cmake", "-S", ".", "-B", "build", "-G", "Ninja", *std_cmake_args, *args
     system "cmake", "--build", "build"
     system "cmake", "--install", "build"
   end
