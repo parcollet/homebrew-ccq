@@ -8,24 +8,25 @@ class Nda < Formula
 
   depends_on "cmake" => :build
   depends_on "ninja" => :build
+
+  depends_on "hdf5"
+  depends_on "itertools"
   depends_on "llvm"
+  depends_on "numpy"
   depends_on "open-mpi"
   depends_on "python"
-  depends_on "numpy"
-  depends_on "itertools"
 
   def install
+    # FIXME : remove after passing to clair
+    system "pip", "install", "--user", "--upgrade", "mako"
+    system "pip", "install", "--user", "--upgrade", "scipy"
 
-   # FIXME : remove after passing to clair 
-   system "pip", "install", "--user", "--upgrade", "mako"
-   system "pip", "install", "--user", "--upgrade", "scipy"
-
-   args = %W[
+    args = %W[
       -DCMAKE_BUILD_TYPE=Release
       -DCMAKE_INSTALL_PREFIX=#{prefix}
       -DPythonSupport=ON
       -DBuild_Tests=OFF
-      -DBuild_Deps=IfNotFound 
+      -DBuild_Deps=IfNotFound
     ]
 
     ENV["CC"] = Formula["llvm"].opt_bin/"clang"
