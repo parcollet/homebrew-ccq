@@ -18,6 +18,7 @@ class Nda < Formula
 
    # FIXME : remove after passing to clair 
    system "pip", "install", "--user", "--upgrade", "mako"
+   system "pip", "install", "--user", "--upgrade", "scipy"
 
    args = %W[
       -DCMAKE_BUILD_TYPE=Release
