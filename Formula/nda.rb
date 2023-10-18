@@ -15,7 +15,11 @@ class Nda < Formula
   depends_on "itertools"
 
   def install
-    args = %W[
+
+   # FIXME : remove after passing to clair 
+   system "pip", "install", "--user", "--upgrade", "mako"
+
+   args = %W[
       -DCMAKE_BUILD_TYPE=Release
       -DCMAKE_INSTALL_PREFIX=#{prefix}
       -DPythonSupport=ON
@@ -37,3 +41,6 @@ class Nda < Formula
     system Formula["llvm"].opt_bin/"clang++", "ess.cpp", "-std=c++20"
   end
 end
+
+# rm all ccq formula
+# brew uninstall `brew list --full-name -1|grep ccq`
