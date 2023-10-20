@@ -52,7 +52,7 @@ c = my_module.MyClass(2,3)
 assert c.f(2) == 4
 ")
     # run it
-    system "python", "test.py"
+    system Formula["python"].opt_bin/"python3", "test.py"
 
     # Write a test with a cmake ?
   end
