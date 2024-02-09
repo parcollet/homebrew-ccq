@@ -48,17 +48,13 @@ class my_class{
            *flags.split, "-shared", "-o",  "#{testpath}/my_module.so"
     # Write a python test
     (testpath/"test.py").write("
-import sys
-print(sys.path)
 import my_module
-#c = my_module.MyClass(2,3)
-#assert c.f(2) == 4
+c = my_module.MyClass(2,3)
+assert c.f(2) == 4
 ")
     # run it
-    #system Formula["python"].opt_bin/"python3", "-c", "a=1" 
-    #system "cat", "#{testpath}/test.py"
-    system "ls", "#{testpath}/**"
-    #system Formula["python@3.12"].opt_bin/"python3", "#{testpath}/test.py"
+    system Formula["python@3.12"].opt_bin/"python3.12", "#{testpath}/test.py"
+    #system Formula["python"].opt_bin/"python3", "#{testpath}/test.py"
 
     # Write a test with a cmake ?
   end
