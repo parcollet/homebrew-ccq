@@ -53,8 +53,9 @@ c = my_module.MyClass(2,3)
 assert c.f(2) == 4
 ")
     # run it
-    system Formula["python@3.12"].opt_bin/"python3.12", "#{testpath}/test.py"
     #system Formula["python"].opt_bin/"python3", "#{testpath}/test.py"
+    # seems more robust. In my install, it insists on using an old, removed python with the above line ?
+    system "python", "#{testpath}/test.py"
 
     # Write a test with a cmake ?
   end
