@@ -1,8 +1,8 @@
-class Clair < Formula
+class C2py < Formula
   desc "Clair/c2py"
   homepage "https://github.com/TRIQS/c2py"
-  # url "https://github.com/TRIQS/nda/archive/refs/tags/1.2.0.tar.gz"
-  # sha256 "e054ff73512b9c43ca8c0b5036629ecf6179befd5b6b9579b963d683be377c89"
+  url "https://github.com/flatironinstitute/c2py/archive/refs/tags/v0.1.tar.gz"
+  sha256 "5ca83f91b898238d533a34007a1585df2d1f6a3a18a10a1a8bc81166812df4da"
   license "Apache-2.0"
   head "https://github.com/TRIQS/c2py.git", branch: "unstable"
 
@@ -11,7 +11,7 @@ class Clair < Formula
   depends_on "ninja" => [:build, :test]
 
   depends_on "llvm"
-  depends_on "python"
+  #depends_on "python@3.12" # automatic from llvm
 
   def install
     args = %W[
