@@ -29,6 +29,13 @@ class Clair < Formula
     system "cmake", "-S", ".", "-B", "build", "-G", "Ninja", *std_cmake_args, *args
     system "cmake", "--build", "build"
     system "cmake", "--install", "build"
+
+    ohai "NOTE: The DYLD_LIBRARY_PATH must be set e.g. \n
+         export DYLD_LIBRARY_PATH=/opt/homebrew/lib/:$DYLD_LIBRARY_PATH
+
+         for clang to find its plugins as in the documentation examples.
+         " 
+    
   end
 
   test do
