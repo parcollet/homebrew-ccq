@@ -11,7 +11,8 @@ class C2py < Formula
   depends_on "ninja" => [:build, :test]
 
   depends_on "llvm"
-  #depends_on "python@3.12" # automatic from llvm
+  depends_on "python@3.12" # automatic from llvm
+  depends_on "numpy"
 
   def install
     args = %W[
