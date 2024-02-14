@@ -1,8 +1,8 @@
 class C2py < Formula
   desc "Clair/c2py"
   homepage "https://github.com/TRIQS/c2py"
-  url "https://github.com/flatironinstitute/c2py/archive/refs/tags/v0.1.tar.gz"
-  sha256 "5ca83f91b898238d533a34007a1585df2d1f6a3a18a10a1a8bc81166812df4da"
+  url "https://github.com/flatironinstitute/c2py/archive/refs/tags/v0.1.1.tar.gz"
+  sha256 "dbe28f89ff0c9091c874e0bcd10a686dd8f761eb6c0568e1f040a84b33f9f86d"
   license "Apache-2.0"
   head "https://github.com/TRIQS/c2py.git", branch: "unstable"
 
@@ -19,7 +19,6 @@ class C2py < Formula
       -DCMAKE_BUILD_TYPE=Release
       -DCMAKE_INSTALL_PREFIX=#{prefix}
       -DBuild_Tests=ON
-      -DBuild_Deps=IfNotFound
     ]
 
     ENV["CC"] = Formula["llvm"].opt_bin/"clang"

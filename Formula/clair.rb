@@ -1,9 +1,8 @@
 class Clair < Formula
   desc "Clair plugins"
   homepage "https://github.com/TRIQS/clair"
-  # url "https://github.com/TRIQS/nda/archive/refs/tags/1.2.0.tar.gz"
-  url "https://github.com/flatironinstitute/clair/archive/refs/tags/v0.1.tar.gz"
-  sha256 "5bc6bcd391132990de85e74675c9246757e1e0d4e306791964b4a5f977da8db1"
+  url "https://github.com/flatironinstitute/clair/archive/refs/tags/v0.1.1.tar.gz"
+  sha256 "6c5d51ae918d44ca072227544b8dd173cad1dee1a0bcbdaf20650e9e68ae86b5"
   license "Apache-2.0"
   head "https://github.com/TRIQS/clair.git", branch: "unstable"
 
