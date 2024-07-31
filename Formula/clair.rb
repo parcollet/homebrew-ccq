@@ -7,7 +7,7 @@ class Clair < Formula
   head "https://github.com/TRIQS/clair.git", branch: "unstable"
 
   depends_on "cmake" => [:build, :test]
-  #depends_on "fmt"
+  depends_on "fmt"
   depends_on "ninja" => [:build, :test]
 
   depends_on "parcollet/ccq/c2py"
@@ -20,6 +20,7 @@ class Clair < Formula
       -DCMAKE_BUILD_TYPE=Release
       -DCMAKE_INSTALL_PREFIX=#{prefix}
       -DBuild_Tests=OFF
+      -DFETCHCONTENT_FULLY_DISCONNECTED=ON
     ]
 
     ENV["CC"] = Formula["llvm"].opt_bin/"clang"
