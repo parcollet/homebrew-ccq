@@ -7,7 +7,7 @@ class Clair < Formula
   head "https://github.com/TRIQS/clair.git", branch: "unstable"
 
   depends_on "cmake" => [:build, :test]
-  depends_on "fmt"=> :build
+  #depends_on "fmt"
   depends_on "ninja" => [:build, :test]
 
   depends_on "parcollet/ccq/c2py"
