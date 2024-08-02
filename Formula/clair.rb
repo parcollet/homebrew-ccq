@@ -20,7 +20,7 @@ class Clair < Formula
       -DCMAKE_BUILD_TYPE=Release
       -DCMAKE_INSTALL_PREFIX=#{prefix}
       -DBuild_Tests=OFF
-      -DFETCHCONTENT_FULLY_DISCONNECTED=ON
+      -DHOMEBREW_ALLOW_FETCHCONTENT=ON
     ]
 
     ENV["CC"] = Formula["llvm"].opt_bin/"clang"
